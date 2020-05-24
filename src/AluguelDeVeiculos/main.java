@@ -1,14 +1,14 @@
 package AluguelDeVeiculos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class main {
 
     public static void main(String[] args) {
 
-        public List<Aluguel> retornaAluguelDoCarro(){
-
-        }
+        List<Aluguel> alugueis = new ArrayList<Aluguel>();
+        List<Carro> carros = new ArrayList<Carro>();
 
 
 
