@@ -1,10 +1,9 @@
 package AluguelDeVeiculos;
 
-public class Aluguel {
+public class Carro {
 
-    private String modelo, placa;
-    double valor;
-    // Adicionar futuramente data inicial e data final
+    private String modelo;
+    private String placa;
 
     public String getModelo() {
         return modelo;
