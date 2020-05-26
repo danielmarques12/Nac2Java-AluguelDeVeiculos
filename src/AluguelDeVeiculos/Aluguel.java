@@ -3,8 +3,9 @@ package AluguelDeVeiculos;
 public class Aluguel {
 
     private String modelo, placa;
-    double valor;
-    // Adicionar futuramente data inicial e data final
+    private double valor;
+
+
 
     public String getModelo() {
         return modelo;
@@ -22,5 +23,5 @@ public class Aluguel {
         this.placa = placa;
     }
 
-    public
+
 }

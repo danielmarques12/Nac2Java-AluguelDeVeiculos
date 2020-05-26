@@ -3,13 +3,9 @@ package AluguelDeVeiculos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
-
-        List<Aluguel> alugueis = new ArrayList<Aluguel>();
-        List<Carro> carros = new ArrayList<Carro>();
-
 
 
     }
