@@ -7,8 +7,8 @@ public class Aluguel {
 
     private String modelo, placa;
     private int valor;
-    private Calendar dataCal;
-    private LocalDate dataRetirada, dataDevolucao;
+    private Calendar dataRetirada;
+    private LocalDate dataDevolucao;
 
     public String getModelo() {
         return modelo;
@@ -34,13 +34,6 @@ public class Aluguel {
         this.valor = valor;
     }
 
-    public LocalDate getDataRetirada() {
-        return dataRetirada;
-    }
-
-    public void setDataRetirada(LocalDate dataRetirada) {
-        this.dataRetirada = dataRetirada;
-    }
 
     public LocalDate getDataDevolucao() {
         return dataDevolucao;
@@ -48,5 +41,13 @@ public class Aluguel {
 
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    public Calendar getDataRetirada() {
+        return dataRetirada;
+    }
+
+    public void setDataRetirada(Calendar dataRetirada) {
+        this.dataRetirada = dataRetirada;
     }
 }
