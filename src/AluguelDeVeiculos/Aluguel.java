@@ -1,11 +1,14 @@
 package AluguelDeVeiculos;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+
 public class Aluguel {
 
     private String modelo, placa;
-    private double valor;
-
-
+    private int valor;
+    private Calendar dataCal;
+    private LocalDate dataRetirada, dataDevolucao;
 
     public String getModelo() {
         return modelo;
@@ -23,5 +26,27 @@ public class Aluguel {
         this.placa = placa;
     }
 
+    public int getValor() {
+        return valor;
+    }
 
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public LocalDate getDataRetirada() {
+        return dataRetirada;
+    }
+
+    public void setDataRetirada(LocalDate dataRetirada) {
+        this.dataRetirada = dataRetirada;
+    }
+
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
 }
