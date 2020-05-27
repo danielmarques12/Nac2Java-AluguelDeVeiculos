@@ -24,34 +24,37 @@ public class BancoDeAlugueis {
 
         while(linha != null){
 
-            String registro[] = linha.split(",");
-            Aluguel aluguel = converte(registro, sdf, dtf);
+            String registros[] = linha.split(",");
+            Aluguel aluguel = converte(registros, sdf, dtf);
             listaDeAlugueis.add(aluguel);
             linha = br.readLine();
         }
         br.close();
     }
 
-    private Aluguel converte(String[] campos, SimpleDateFormat sdf, DateTimeFormatter dtf) throws Exception{
+    private void getAluguelFields(Aluguel aluguel){
 
-        LocalDate ld = LocalDate.parse(campos[2], dtf);
+        System.out.println(aluguel.getModelo() + ", " + aluguel.getPlaca() + "," + aluguel.getDataRetirada() +
+                ", " + aluguel.getDataDevolucao() + ", " + aluguel.getValor());
+    }
+
+    private Aluguel converte(String[] registros, SimpleDateFormat sdf, DateTimeFormatter dtf) throws Exception{
+
+        LocalDate ld = LocalDate.parse(registros[2], dtf);
 
         Calendar cal = Calendar.getInstance();
-        Date d = sdf.parse(campos[3]);
+        Date d = sdf.parse(registros[3]);
         cal.setTime(d);
 
         Aluguel aluguel = new Aluguel();
-        aluguel.setModelo(campos[0]);
-        aluguel.setPlaca(campos[1]);
+
+        aluguel.setModelo(registros[0]);
+        aluguel.setPlaca(registros[1]);
         aluguel.setDataRetirada(cal);
         aluguel.setDataDevolucao(ld);
-        aluguel.setValor(Integer.parseInt(campos[4]));
+        aluguel.setValor(Integer.parseInt(registros[4]));
 
-        System.out.println(aluguel.getModelo());
-        System.out.println(aluguel.getPlaca());
-        System.out.println(aluguel.getDataRetirada());
-        System.out.println(aluguel.getDataDevolucao());
-        System.out.println(aluguel.getValor());
+        getAluguelFields(aluguel);
 
         return aluguel;
     }
