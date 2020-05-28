@@ -5,16 +5,13 @@ import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class BancoDeAlugueis {
 
-    public BancoDeAlugueis(String arquivo) throws Exception{
+    private List<Aluguel> listaDeAlugueis = new ArrayList<>();
 
-        List<Aluguel> listaDeAlugueis = new ArrayList<>();
+    public BancoDeAlugueis(String arquivo) throws Exception{
 
         BufferedReader br = new BufferedReader(new FileReader(arquivo));
         String linha = br.readLine();
@@ -32,7 +29,41 @@ public class BancoDeAlugueis {
         br.close();
     }
 
-    private void getAluguelFields(Aluguel aluguel){
+    public List<Aluguel> retornaAluguelDoCarro(String placa){
+
+        List<Aluguel> filtrarCarrosAlugadosPelaPlaca = new ArrayList<>();
+
+        for(Aluguel aluguel : listaDeAlugueis){
+
+            if(aluguel.getPlaca().equals(placa)){
+                filtrarCarrosAlugadosPelaPlaca.add(aluguel);
+            }
+        }
+        return filtrarCarrosAlugadosPelaPlaca;
+    }
+
+    public List<Carro> retornaCarrosaluguel(){
+
+        List<Carro> carros = new ArrayList<>();
+
+        for(Aluguel aluguel : listaDeAlugueis){
+
+            Carro carro = new Carro();
+            carro.setModelo(aluguel.getModelo());
+            carro.setPlaca(aluguel.getPlaca());
+            carros.add(carro);
+        }
+
+        List<Carro> carrosUnicos = new ArrayList<>(new HashSet<>(carros));
+
+        for (Carro carro : carrosUnicos){
+            System.out.println(carro.getModelo());
+        }
+
+        return carrosUnicos;
+    }
+
+    private void getAluguel(Aluguel aluguel){
 
         System.out.println(aluguel.getModelo() + ", " + aluguel.getPlaca() + "," + aluguel.getDataRetirada() +
                 ", " + aluguel.getDataDevolucao() + ", " + aluguel.getValor());
@@ -50,11 +81,11 @@ public class BancoDeAlugueis {
 
         aluguel.setModelo(registros[0]);
         aluguel.setPlaca(registros[1]);
-        aluguel.setDataRetirada(cal);
+        aluguel.setDataRetirada(ld);
         aluguel.setDataDevolucao(ld);
         aluguel.setValor(Integer.parseInt(registros[4]));
 
-        getAluguelFields(aluguel);
+//        getAluguel(aluguel);
 
         return aluguel;
     }
