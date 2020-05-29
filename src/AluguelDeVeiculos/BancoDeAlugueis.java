@@ -45,7 +45,8 @@ public class BancoDeAlugueis {
     public List<Carro> retornaCarrosaluguel(){
 
         List<Carro> carros = new ArrayList<>();
-        List<Carro> carros
+        List<Carro> retornaCarrosAluguel = new ArrayList<>();
+        List<String> verificaCarrosRepetidos = new ArrayList<>();
 
         for(Aluguel aluguel : listaDeAlugueis){
 
@@ -53,14 +54,13 @@ public class BancoDeAlugueis {
             carro.setModelo(aluguel.getModelo());
             carro.setPlaca(aluguel.getPlaca());
             carros.add(carro);
+            retornaCarrosAluguel.add(carro);
         }
-
-        List<String> verificaCarrosRepetidos = new ArrayList<>();
 
         carros.forEach(
             object -> {
                 if(verificaCarrosRepetidos.contains(object.getModelo())){
-                    carros.remove(object);
+                    retornaCarrosAluguel.remove(object);
                 }
                 else{
                     verificaCarrosRepetidos.add(object.getModelo());
@@ -68,11 +68,7 @@ public class BancoDeAlugueis {
             }
         );
 
-        for (Carro carro : carros){
-            System.out.println(carro.getModelo());
-        }
-
-        return carros;
+        return retornaCarrosAluguel;
     }
 
     private void getAluguel(Aluguel aluguel){
