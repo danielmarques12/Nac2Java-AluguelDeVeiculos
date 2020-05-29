@@ -21,12 +21,23 @@ public class BancoDeAlugueis {
 
         while(linha != null){
 
-            String registros[] = linha.split(",");
+            String[] registros = linha.split(",");
             Aluguel aluguel = converte(registros, sdf, dtf);
             listaDeAlugueis.add(aluguel);
             linha = br.readLine();
         }
         br.close();
+    }
+
+    public void faturamentoTotal(){
+
+        int faturamentoTotal = 0;
+
+        for (Aluguel aluguel : listaDeAlugueis){
+
+            faturamentoTotal += aluguel.getValor();
+        }
+        System.out.println("O faturamento total foi de: R$ " + faturamentoTotal);
     }
 
     public List<Aluguel> retornaAluguelDoCarro(String placa){
@@ -67,7 +78,6 @@ public class BancoDeAlugueis {
                 }
             }
         );
-
         return retornaCarrosAluguel;
     }
 

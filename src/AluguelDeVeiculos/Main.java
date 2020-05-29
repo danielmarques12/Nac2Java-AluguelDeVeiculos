@@ -13,6 +13,7 @@ public class Main {
 
         bancoDeAlugueis.retornaAluguelDoCarro("LXD-4902");
         bancoDeAlugueis.retornaCarrosaluguel();
+        bancoDeAlugueis.faturamentoTotal();
 
     }
 }
